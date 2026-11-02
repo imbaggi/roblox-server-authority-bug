@@ -97,7 +97,8 @@ Could you look into the paired errors? Or is there a supported way to tell wheth
 
 The installer is also available as a separate file: [installer.lua](installer.lua) (paste its contents into the Studio Command Bar).
 
-[details="Scene installer (original repro sources)"]
+<details><summary>Scene installer (original repro sources)</summary>
+
 ```lua
 -- Run in Studio Edit mode in a NEW EMPTY place after configuring Server Authority.
 -- This creates the three original reproduction scripts. It does not erase existing content.
@@ -360,4 +361,5 @@ end)
 
 print("Reproduction scripts installed. Configure network settings, then start a two-client test.")
 ```
-[/details]
+
+</details>
