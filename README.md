@@ -45,6 +45,8 @@ How I count:
 
 Events cluster and don't happen every run. Nothing here shows latency or jitter is required.
 
+**What triggers the resims:** in a separate 20 s diagnostic run (constant command, not part of the table), all 73 of 73 resimulations included `Player1/HumanoidRootPart` (CFrame, Velocity), i.e. the default player character. So the rollbacks that shift the measured part are triggered by the character, not by the attribute my scripts write. The diagnostic instrumentation is not included in the installer.
+
 **Separate thing: time jump, then catch-up**
 
 One extra run (not in the table) showed something different. The network settings were 30/30 ms delay, 12/15 ms jitter, 0.2/0.3% loss, IncomingReplicationLag = 0.
@@ -86,7 +88,7 @@ I've only launched through this API, not the Server & Clients button. The label 
 
 **What I don't know**
 
-- I don't know the internal cause or how old the restored state is. Default characters are still in the scene, and nothing here says which instance triggers each resim.
+- I don't know the internal cause or how old the restored state is. In the diagnostic run every resim included the default character's HumanoidRootPart; I haven't checked whether that holds for every anomaly in the table.
 - The long `[CALLS]` / `[TRACK]` dumps got truncated, so treat them as incomplete. The short `[LT]` lines are intact and agree with each other. Totals come from in-script counters, not a full trajectory rebuild.
 - I didn't read back the network settings in each client's log. Both clients share one server, so their reports aren't independent trials.
 - I've only tested Studio on one Mac. I haven't tried a published game, separate machines, or another OS, and I haven't measured how it looks on screen.
